@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: lightpink;
+        }
+
+        #converter {
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            border: 1px solid #ddd;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        #output {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid black;
+        }
+    </style>
+    <title>Date Format Converter</title>
+</head>
+<body>
+    
+    <div id="converter">
+        <label for="inputDate">Enter Date:</label>
+        <input type="text" id="inputDate" placeholder="e.g., 12/11/2012" />
+
+        <label for="inputFormat">Input Format:</label>
+        <input type="text" id="inputFormat" placeholder="e.g., MM/DD/YYYY" />
+
+        <label for="outputFormat">Output Format:</label>
+        <input type="text" id="outputFormat" placeholder="e.g., YYYY-MM-DD" />
+
+        <button onclick="convertDateFormat()">Convert</button>
+
+        <div id="output"></div>
+    </div>
+
+    <script>
+        function convertDateFormat() {
+            var inputDate = document.getElementById("inputDate").value;
+            var inputFormat = document.getElementById("inputFormat").value;
+            var outputFormat = document.getElementById("outputFormat").value;
+
+            var parsedDate = parseDate(inputDate, inputFormat);
+            
+            if (parsedDate) {
+                var formattedDate = formatDate(parsedDate, outputFormat);
+                document.getElementById("output").innerText = "Converted Date: " + formattedDate;
+            } else {
+                document.getElementById("output").innerText = "Invalid Date Format";
+            }
+        }
+
+        function parseDate(dateString, format) {
+            return window.moment(dateString, format, true);
+        }
+
+        function formatDate(date, format) {
+            return date.format(format);
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+</body>
+</html>

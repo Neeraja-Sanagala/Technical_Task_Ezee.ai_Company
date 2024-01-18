@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: greeen;
+        }
+
+        .device-list {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .device-item {
+            background-color: lightblue;
+            border: 1px solid #ddd;
+            padding: 10px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .device-item:hover {
+            transform: scale(1.05);
+        }
+
+        #deviceDescription {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        #closeButton {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+        .d{
+            padding:2%;
+            border:2px solid black;
+            margin-top: -260px;
+        }
+    </style>
+    <title>Device Information</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="d">
+    <ul class="device-list">
+        <li class="device-item" onclick="showDeviceDescription('MobilePhone')">Mobile Phone</li>
+        <li class="device-item" onclick="showDeviceDescription('Laptop')">Laptop</li>
+        <li class="device-item" onclick="showDeviceDescription('Desktop')">Desktop</li>
+        <li class="device-item" onclick="showDeviceDescription('Smart Watch')">Smart Watch</li>
+        <li class="device-item" onclick="showDeviceDescription('Webcam')">Webcam</li>
+        <li class="device-item" onclick="showDeviceDescription('Bluetooth speaker')">Bluetooth speaker</li>
+        <li class="device-item" onclick="showDeviceDescription('Earphones')">Earphones</li>
+        <li class="device-item" onclick="showDeviceDescription('Mouse')">Mouse</li>
+        <li class="device-item" onclick="showDeviceDescription('Backup charger')">Backup charger</li>
+        <li class="device-item" onclick="showDeviceDescription('Printer')">Printer</li>
+       
+    </ul>
+</div>
+</div>
+
+    <div id="deviceDescription">
+        <span id="closeButton" onclick="closeDeviceDescription()">X</span>
+        <h2 id="deviceTitle"></h2>
+        <p id="deviceDetails"></p>
+    </div>
+
+    <script>
+        function showDeviceDescription(deviceName) {
+            document.getElementById('deviceTitle').innerText = deviceName;
+            // Add random details or specific details for each device
+            var details = generateRandomDetails();
+            document.getElementById('deviceDetails').innerText = details;
+            document.getElementById('deviceDescription').style.display = 'block';
+        }
+
+        function closeDeviceDescription() {
+            document.getElementById('deviceDescription').style.display = 'none';
+        }
+
+        function generateRandomDetails() {
+            var detailsList = [
+                "Electronic devices used for easy to work.",
+                "Electronic devices used for easy to work.",
+                "Electronic devices used for easy to work.",
+                "Electronic devices used for easy to work.",
+                "Electronic devices used for easy to work.",
+                "Electronic devices used for easy to work.",
+                "Electronic devices used for easy to work.",
+                "Electronic devices used for easy to work.",
+                "Electronic devices used for easy to work.",
+                "Electronic devices used for easy to work.",
+            ];
+            var randomIndex = Math.floor(Math.random() * detailsList.length);
+            return detailsList[randomIndex];
+        }
+    </script>
+
+</body>
+</html>
